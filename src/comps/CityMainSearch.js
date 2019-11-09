@@ -1,13 +1,9 @@
 import React from "react";
 import {
-    FormGroup,
-    Form,
-    Input,
-    Button
+    Input
 } from "reactstrap";
 
-
-class CitySearch extends React.Component {
+class CityMainSearch extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,34 +13,27 @@ class CitySearch extends React.Component {
             cityKey: ''
         };
     }
-
     render() {
+
         return (
             <>
-                <Form className="form-inline ml-auto" data-background-color="">
-                    <FormGroup className="has-white">
-                        <div className='autocomplete'>
-                            <Input
-                                onChange={this.handleText.bind(this)}
-                                placeholder="Search"
-                                type="text"
-                                name='cityInput'
-                                value={this.state.cityInput}
-                            ></Input>
-                            <ul id ='input'>
-                                {this.state.suggestions.map(c =>
-                                    <li className='autoText' onClick={this.clickedText.bind(this, c.Key)}>{c.LocalizedName}</li>
-                                )}
-                            </ul>
-                        </div>
-                        <Button>Search</Button>
-                    </FormGroup>
-                </Form>
+                <Input
+                    type="text"
+                    placeholder="Enter City"
+                    onChange={this.handleText.bind(this)}
+                >
+                </Input>
+
+                <ul className='input'>
+                    {this.state.suggestions.map(c =>
+                        <li key={c.key} onClick={this.clickedText.bind(this, c.Key)}>{c.LocalizedName}</li>
+
+                    )}
+                </ul>
             </>
         );
     }
     handleText(ev) {
-        debugger
         this.state.cityInput = ev.target.value;
         this.getCity()
 
@@ -54,8 +43,7 @@ class CitySearch extends React.Component {
 
         if (this.state.cityInput === '') {
             console.log('yes');
-        this.setState({ suggestions: [] });
-
+            this.setState({ suggestions: [] });
 
         } else {
             fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=gl5hH8RBGuV1KsPKXfDNtpVVOiSarSp3&q=${this.state.cityInput}`)
@@ -75,6 +63,4 @@ class CitySearch extends React.Component {
         this.setState({ suggestions: [] });
     }
 }
-
-
-export default CitySearch;
+export default CityMainSearch;

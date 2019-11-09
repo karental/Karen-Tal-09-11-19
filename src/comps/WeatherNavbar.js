@@ -13,7 +13,7 @@ import CitySearch from './CitySearch'
 function WeatherNavbar(){
   return (
     <>
-      <Navbar className="bg-info" expand="lg">
+      <Navbar className="navigationFlex bg-transparent" expand="lg">
         <Container>
           <button
             className="navbar-toggler"
@@ -40,7 +40,7 @@ function WeatherNavbar(){
                 </NavLink>
               </NavItem>
             </Nav>
-<CitySearch></CitySearch>
+            <CitySearch />
           </UncontrolledCollapse>
         </Container>
       </Navbar>

@@ -1,5 +1,14 @@
+body{
+  background: url('./assets/img/back.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -42,4 +51,13 @@ li:hover {
   margin:10px;
   margin-top:0px;
   position: absolute;
+}
+.navigationFlex {
+display: flex;
+}
+
+@media screen and (max-width: 700px) {
+  .navigationFlex  {   
+    flex-direction: column;
+  }
 }
