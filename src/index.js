@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import allReducers from './reducers';
 import './assets/css/bootstrap.min.css';
 import "./assets/css/now-ui-kit.css";
-// import "assets/css/now-ui-kit.min.css";
-// import "assets/css/now-ui-kit.css.map";
+import thunk  from 'redux-thunk'
 import "./assets/demo/demo.css";
 
 
-const store =createStore(allReducers);
+
+const store =createStore(allReducers ,
+    applyMiddleware(thunk));
 
 ReactDOM.render(
 <Provider store = {store}>

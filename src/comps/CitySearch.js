@@ -3,8 +3,11 @@ import {
     FormGroup,
     Form,
     Input,
-    Button
+    Button,
+    FormText
 } from "reactstrap";
+import { connect } from 'react-redux'
+import { loadCity, getCityName, loadWeather, setTrueFromFavorite } from '../actions'
 
 
 class CitySearch extends React.Component {
@@ -12,69 +15,101 @@ class CitySearch extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cityInput: "",
-            suggestions: [],
-            cityKey: ''
+            cityKey: "",
+            searchInput: '',
+            showing: false
         };
     }
 
     render() {
         return (
             <>
-                <Form className="form-inline ml-auto" data-background-color="">
-                    <FormGroup className="has-white">
+                <Form style={{ margin: 'auto', width: '100rem' }} className="form-inline ml-auto" data-background-color="">
+                    <FormGroup style={{ margin: 'auto', display: 'inline' }} className="has-white">
                         <div className='autocomplete'>
                             <Input
                                 onChange={this.handleText.bind(this)}
                                 placeholder="Search"
                                 type="text"
                                 name='cityInput'
-                                value={this.state.cityInput}
+                                className='cityInput'
+                                value={this.state.searchInput}
+                                style={{ width: '50rem' }}
                             ></Input>
-                            <ul id ='input'>
-                                {this.state.suggestions.map(c =>
+                            <ul id='input'>
+                                {this.props.citysuggetions.map(c =>
                                     <li className='autoText' onClick={this.clickedText.bind(this, c.Key)}>{c.LocalizedName}</li>
                                 )}
                             </ul>
+                
                         </div>
-                        <Button>Search</Button>
+                        <Button className='searchButton' color="primary" onClick={this.getweather.bind(this)}>
+                            <i className="fas fa-search"></i>
+                        </Button>
+                        <div style={{ display: (this.state.showing ? 'block' : 'none') }} >
+                                <h6>  Oops, can't find your location      </h6>    </div>
                     </FormGroup>
+                    
                 </Form>
+           
             </>
         );
     }
     handleText(ev) {
-        debugger
-        this.state.cityInput = ev.target.value;
-        this.getCity()
+        this.setState({ showing: false })
+        this.setState({ searchInput: ev.target.value })
+        const { loadCity, setTrueFromFavorite } = this.props;
+        loadCity(ev.target.value);
+        setTrueFromFavorite(true);
 
     }
-    getCity() {
-        console.log(this.state.cityInput)
-
-        if (this.state.cityInput === '') {
-            console.log('yes');
-        this.setState({ suggestions: [] });
 
 
-        } else {
-            fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=gl5hH8RBGuV1KsPKXfDNtpVVOiSarSp3&q=${this.state.cityInput}`)
-                .then(r => r.json())
-                .then(data => {
-                    console.log(data);
-                    this.setState({ suggestions: data });
-                });
-        }
-    }
     clickedText(key, ev) {
-        debugger
-        console.log(key);
+        this.setState({ searchInput: ev.target.innerHTML })
         this.setState({ cityKey: key })
         this.setState({ city: ev.target.innerHTML })
         this.setState({ cityInput: ev.target.innerHTML })
-        this.setState({ suggestions: [] });
+    }
+
+    getweather() {
+        
+        if (this.state.cityKey === "" || this.state.cityKey !== this.state.cityKey) {
+            for (let i = 0; i < this.props.citysuggetions.length; i++) {
+                if (this.state.searchInput === this.props.citysuggetions[i].LocalizedName) {
+                    this.state.cityKey = this.props.citysuggetions[i].Key
+                    break
+                } else {
+                }
+            }
+        }
+        if (this.state.cityKey === "") {
+            this.setState({ showing: true })
+        } else {
+            const { loadWeather, getCityName } = this.props
+            getCityName(this.state.searchInput);
+            this.setState({ searchInput: '' })
+            loadWeather(this.state.cityKey, this.props.unit)
+            const { loadCity } = this.props;
+            loadCity('');
+        }
+    }
+}
+const mapStateToProps = (state) => {
+    return {
+        citysuggetions: state.citySuggetions.citySuggetions,
+        cityWeather: state.weather,
+        unit: state.unit.unit,
+        cityName: state.cityName.cityName
+
     }
 }
 
+const mapDispatchToProps = {
+    loadWeather,
+    loadCity,
+    getCityName,
+    setTrueFromFavorite
+}
 
-export default CitySearch;
+export default connect(mapStateToProps, mapDispatchToProps)(CitySearch);

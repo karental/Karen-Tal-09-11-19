@@ -1,21 +1,44 @@
 import React from 'react';
 import './App.css';
 import WeatherNavbar from './comps/WeatherNavbar';
-import MainCard from './comps/MainCard'
-import CityMainSearch from './comps/CityMainSearch'
-import Daily from './comps/DailyCards'
+import { connect } from 'react-redux';
+import { getDefaultCity } from './actions';
+var Night = require('./back.jpg');
+var Day = require('./day.jpg');
 
-function App() {
-  return (
-<>
-<WeatherNavbar />
+class App extends React.Component {
 
-<div className='mainDivContainer'>
-<CityMainSearch/>
-<MainCard />
-<Daily/>
-</div>
-</>  );
+  componentDidMount() {
+    const { getDefaultCity } = this.props;
+    getDefaultCity()
+
+    var now = new Date();
+    var hour = now.getHours();
+    if (hour > 4 && hour < 18) {
+      document.body.style.backgroundImage = 'url(' + Day + ')';
+
+    } else {
+      document.body.style.backgroundImage = 'url(' + Night + ')';
+    }
+
+
+  }
+  render() {
+    return (
+      <>
+        <WeatherNavbar />
+      </>);
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    cityName: state.cityName.cityName,
+  }
+}
+
+const mapDispatchToProps = {
+  getDefaultCity,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

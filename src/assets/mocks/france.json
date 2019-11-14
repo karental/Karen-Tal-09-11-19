@@ -1,0 +1,182 @@
+{
+    "Headline": {
+        "EffectiveDate": "2019-11-11T07:00:00+01:00",
+        "EffectiveEpochDate": 1573452000,
+        "Severity": 5,
+        "Text": "Expect showers Monday",
+        "Category": "rain",
+        "EndDate": "2019-11-11T19:00:00+01:00",
+        "EndEpochDate": 1573495200,
+        "MobileLink": "http://m.accuweather.com/en/fr/paris/623/extended-weather-forecast/623?lang=en-us",
+        "Link": "http://www.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?lang=en-us"
+    },
+    "DailyForecasts": [
+        {
+            "Date": "2019-11-10T07:00:00+01:00",
+            "EpochDate": 1573365600,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 39.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 45.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 12,
+                "IconPhrase": "Showers",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://m.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=1&lang=en-us",
+            "Link": "http://www.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=1&lang=en-us"
+        },
+        {
+            "Date": "2019-11-11T07:00:00+01:00",
+            "EpochDate": 1573452000,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 40.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 48.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 14,
+                "IconPhrase": "Partly sunny w/ showers",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 38,
+                "IconPhrase": "Mostly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://m.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=2&lang=en-us",
+            "Link": "http://www.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=2&lang=en-us"
+        },
+        {
+            "Date": "2019-11-12T07:00:00+01:00",
+            "EpochDate": 1573538400,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 37.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 47.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 12,
+                "IconPhrase": "Showers",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 35,
+                "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://m.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=3&lang=en-us",
+            "Link": "http://www.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=3&lang=en-us"
+        },
+        {
+            "Date": "2019-11-13T07:00:00+01:00",
+            "EpochDate": 1573624800,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 38.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 48.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 6,
+                "IconPhrase": "Mostly cloudy",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 7,
+                "IconPhrase": "Cloudy",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Moderate"
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://m.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=4&lang=en-us",
+            "Link": "http://www.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=4&lang=en-us"
+        },
+        {
+            "Date": "2019-11-14T07:00:00+01:00",
+            "EpochDate": 1573711200,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 35.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                },
+                "Maximum": {
+                    "Value": 44.0,
+                    "Unit": "F",
+                    "UnitType": 18
+                }
+            },
+            "Day": {
+                "Icon": 12,
+                "IconPhrase": "Showers",
+                "HasPrecipitation": true,
+                "PrecipitationType": "Rain",
+                "PrecipitationIntensity": "Light"
+            },
+            "Night": {
+                "Icon": 7,
+                "IconPhrase": "Cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://m.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=5&lang=en-us",
+            "Link": "http://www.accuweather.com/en/fr/paris/623/daily-weather-forecast/623?day=5&lang=en-us"
+        }
+    ]
+}
