@@ -5,8 +5,8 @@ function setUnit(unit) {
     }
 }
 
-export const updateUnit = (unit) => {  
-    debugger   
+export const updateUnit = (unit) => {
+    
     return dispatch => {
         dispatch(setUnit(unit))
     }
@@ -35,14 +35,12 @@ function setWeather(weather) {
 }
 
 
-export const loadWeather = (key, unit) => { 
+export const loadWeather = (key, unit) => {
     return dispatch => {
-        fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=3c0K1bGjP9n0V4FNFl5Cj4r8F4j9oM3Z&metric=${unit}`)
+        fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
             .then(r => r.json())
             .then(weather => {
-                debugger
-                weather.cityKey =key
-               
+                weather.cityKey = key
                 for (let i = 0; i < weather.DailyForecasts.length; i++) {
 
                     var icon = weather.DailyForecasts[i].Day.Icon
@@ -73,20 +71,20 @@ export const loadWeather = (key, unit) => {
 
 
 
-function setCityAutocomplete(citySuggtions) { 
+function setCityAutocomplete(citySuggtions) {
     return {
         type: 'SET_SUGGETIONS',
         citySuggtions
     }
 }
 
-export const loadCity = (city) => { 
+export const loadCity = (city) => {
     return dispatch => {
         if (city === '') {
             var citySuggtions = []
             dispatch(setCityAutocomplete(citySuggtions))
         } else {
-            fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=3c0K1bGjP9n0V4FNFl5Cj4r8F4j9oM3Z&q=${city}`)
+            fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&q=${city}`)
                 .then(r => r.json())
                 .then(data => {
                     dispatch(setCityAutocomplete(data))
@@ -98,14 +96,14 @@ export const loadCity = (city) => {
 }
 
 
-function setCityName(cityName) { 
+function setCityName(cityName) {
     return {
         type: 'GET_CITY_NAME',
         cityName
     }
 }
 
-export const getCityName = (Name) => { 
+export const getCityName = (Name) => {
     return dispatch => {
         if (Name === '') {
         } else {
@@ -114,7 +112,7 @@ export const getCityName = (Name) => {
     }
 }
 
-export const getDefaultCity = () => { 
+export const getDefaultCity = () => {
     return dispatch => {
         fetch(`http://www.geoplugin.net/json.gp`)
             .then(r => r.json())
@@ -125,76 +123,75 @@ export const getDefaultCity = () => {
 }
 
 
-export const addFavorite = (favorite) => { 
-    debugger
+export const addFavorite = (favorite) => {
     return dispatch => {
-        if (favorite === "") {
+        if (!favorite.length) {
             localStorage.removeItem('MyFavorites');
             dispatch(getFavoritesFromLocalStorage(favorite))
             return
         } else {
-            favorite = JSON.stringify(favorite)
-            localStorage.setItem('MyFavorites', favorite);
+           var favoriteSTR = JSON.stringify(favorite)
+            localStorage.setItem('MyFavorites', favoriteSTR);
             dispatch(getFavoritesFromLocalStorage(favorite))
         }
     }
 }
 
 
-function getFavoritesFromLocalStorage(myFavorites) { 
+function getFavoritesFromLocalStorage(myFavorites) {
     return {
         type: 'GET_FAVORITES',
         myFavorites
     }
 }
 
-export const getFavorite = () => { 
+export const getFavorite = () => {
     return dispatch => {
         var favoritesFromStorage = []
         if (localStorage.getItem('MyFavorites') === null) {
             dispatch(getFavoritesFromLocalStorage(favoritesFromStorage))
         } else {
-            favoritesFromStorage = localStorage.getItem('MyFavorites')
-            favoritesFromStorage = JSON.parse(favoritesFromStorage)
-            dispatch(getFavoritesFromLocalStorage(favoritesFromStorage))
+            var favoritesArrayFromStorage = localStorage.getItem('MyFavorites')
+            favoritesArrayFromStorage = JSON.parse(favoritesArrayFromStorage)
+            dispatch(getFavoritesFromLocalStorage(favoritesArrayFromStorage))
         }
     }
 }
 
-function getFavoritesWeather(favoritesWeather) { 
+function getFavoritesWeather(favoritesWeather) {
     return {
         type: 'GET_FAVORITES_WEATHER',
         favoritesWeather
     }
 }
 
-export const loadFavoriteWeather = (favoriteKeys, unit) => { 
+export const loadFavoriteWeather = (favoriteKeys, unit) => {
     return dispatch => {
-            var favoritesWeahter = []
-            for (let i = 0; i < favoriteKeys.length; i++) {
-                fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${favoriteKeys[i].key}?apikey=3c0K1bGjP9n0V4FNFl5Cj4r8F4j9oM3Z&metric=${unit}`)
-                    .then(r => r.json())
-                    .then(weather => {
-                        weather.DailyForecasts[0].city = favoriteKeys[i].name
-                        weather.DailyForecasts[0].key = favoriteKeys[i].key
+        var favoritesWeather = []
+        for (let i = 0; i < favoriteKeys.length; i++) {
+            fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${favoriteKeys[i].key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
+                .then(r => r.json())
+                .then(weather => {
+                    weather.DailyForecasts[0].city = favoriteKeys[i].name
+                    weather.DailyForecasts[0].key = favoriteKeys[i].key
 
-                        for (let i = 0; i < weather.DailyForecasts.length; i++) {
-                            var icon = weather.DailyForecasts[i].Day.Icon
-                            icon = icon.toString().length
-                            if (icon === 1) {
-                                weather.DailyForecasts[i].Day.Icon = `https://developer.accuweather.com/sites/default/files/0${weather.DailyForecasts[i].Day.Icon}-s.png`
-                            } else {
-                                weather.DailyForecasts[i].Day.Icon = `https://developer.accuweather.com/sites/default/files/${weather.DailyForecasts[i].Day.Icon}-s.png`
-                            }
-                            favoritesWeahter.push(weather)
-                            if (favoritesWeahter.length !== favoriteKeys.length) {
-                            } else {
-                                dispatch(getFavoritesWeather(favoritesWeahter))
-                            }
+                    for (let i = 0; i < weather.DailyForecasts.length; i++) {
+                        var icon = weather.DailyForecasts[i].Day.Icon
+                        icon = icon.toString().length
+                        if (icon === 1) {
+                            weather.DailyForecasts[i].Day.Icon = `https://developer.accuweather.com/sites/default/files/0${weather.DailyForecasts[i].Day.Icon}-s.png`
+                        } else {
+                            weather.DailyForecasts[i].Day.Icon = `https://developer.accuweather.com/sites/default/files/${weather.DailyForecasts[i].Day.Icon}-s.png`
                         }
-                    })
+                        favoritesWeather.push(weather)
+                        if (favoritesWeather.length !== favoriteKeys.length) {
+                        } else {
+                            dispatch(getFavoritesWeather(favoritesWeather))
+                        }
+                    }
+                })
 
-            }
         }
-    
+    }
+
 }

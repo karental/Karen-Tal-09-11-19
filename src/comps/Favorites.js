@@ -11,36 +11,58 @@ class Favorites extends React.Component {
             myFavorites,
             unit
         } = this.props
+
         let favoritesArray = this.props.myFavorites
         if (favoritesArray === undefined) {
 
         } else {
-            debugger
-            var type =( typeof this.props.myFavorites)
+            var type = (typeof this.props.myFavorites)
             console.log(type);
-            debugger
+
             if (type === "string") {
                 myFavorites = JSON.parse(favoritesArray)
-                }
-                if (myFavorites !== prevProps.myFavorites ||
-                    unit !== prevProps.unit) {
-                        debugger
-                        const { loadFavoriteWeather } = this.props
-                    loadFavoriteWeather(myFavorites, unit)
             }
+            if (myFavorites !== prevProps.myFavorites ||
+                unit !== prevProps.unit) {
 
-
+                const { loadFavoriteWeather } = this.props
+                loadFavoriteWeather(myFavorites, unit)
+            }
         }
     }
 
     render() {
-        if (this.props.favoritesWeather.length === undefined || this.props.favoritesWeather.length === 0 || this.props.favoritesWeather.length !== this.props.myFavorites.length) {
+        if (this.props.favoritesWeather.length === undefined ||
+            this.props.favoritesWeather.length !== this.props.myFavorites.length) {
             return (
                 <>
                     <Loading />
                 </>
             )
-        } else if (this.props.favoritesWeather.length === this.props.myFavorites.length) {
+        }
+        else if (this.props.favoritesWeather.length === 0) {
+            return (
+                <div style={{    
+                    display: 'flex',
+                    width: '100%'}}>
+                    <Card style={{
+                        margin: 'auto',
+                        width: '250px',
+                        backgroundColor:'rgba(255, 255, 255, 0.8)'
+                    }}>
+                        <CardBody>  
+                            <CardText>
+                                You have nothing in your Favorites, go back to add locations!
+                            </CardText>
+                            <Button className="btn-round btn-icon" color="primary" onClick={this.goHome.bind(this)}>
+                                <i class="fas fa-home"></i>
+                            </Button>
+                        </CardBody>
+                    </Card>
+                </div>
+            )
+        }
+        else if (this.props.favoritesWeather.length === this.props.myFavorites.length) {
             return (
                 <div>
                     <hi className='favoritesText text-primary'>Favorites</hi>
@@ -61,7 +83,9 @@ class Favorites extends React.Component {
             );
         }
     }
-
+goHome(){
+    this.props.history.push('/home')
+}
     getFavWeather(cityKey, cityName) {
         const { loadWeather, setTrueFromFavorite, getCityName } = this.props
         loadWeather(cityKey, this.props.unit)
@@ -70,16 +94,16 @@ class Favorites extends React.Component {
         this.props.history.push('/home')
     }
     removeFromFavorites(city) {
-
+        debugger
         let myRemoved = this.props.myFavorites
         myRemoved = myRemoved.filter(c => c.name != city);
         if (myRemoved.length === 0) {
             const { addFavorite } = this.props
-            addFavorite('')
+            addFavorite([])
         } else {
             for (let i = 0; i < myRemoved.length; i++) {
                 const { addFavorite, loadFavoriteWeather } = this.props
-                addFavorite(myRemoved[i]);
+                addFavorite(myRemoved);
                 var myfaveArray = this.props.myFavorites;
                 if (typeof myfaveArray === 'string') {
                     myfaveArray = JSON.parse(myfaveArray)

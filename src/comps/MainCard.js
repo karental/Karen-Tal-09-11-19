@@ -11,18 +11,10 @@ import { connect } from 'react-redux';
 import { addFavorite } from '../actions';
 
 class MainCard extends React.Component {
-  state={
+  state = {
     addToFavorites: "Add to Favorites",
     disabled: false
   }
-
-componentWillMount(){
-  if(this.props.favorites.name === this.props.currCity){
-    this.setState({addToFavorites: "Added!"})
-    this.setState({disabled: true})
-
-  }
-}
 
   render() {
     debugger
@@ -42,7 +34,7 @@ componentWillMount(){
               <CardSubtitle className="mb-2 ">
                 {this.props.currweather.Headline.Text}
               </CardSubtitle>
-             <img src={this.props.currweather.DailyForecasts[0].Day.Icon}></img>
+              <img src={this.props.currweather.DailyForecasts[0].Day.Icon}></img>
               <CardText><h4>{this.props.currweather.DailyForecasts[0].Temperature.Minimum.Value} °{this.props.currweather.DailyForecasts[0].Temperature.Minimum.unit} </h4></CardText>
               <Button disabled={this.state.disabled} className="btn-round" color="primary" onClick={this.addToFavorite.bind(this)}>
                 {this.state.addToFavorites}
@@ -56,22 +48,18 @@ componentWillMount(){
   }
 
   addToFavorite() {
-    debugger
     var myCity = {
       name: this.props.currCity,
       key: this.props.currweather.cityKey
     }
-    debugger
-    var myFavoritesArr = [this.props.favorites]
+    var myFavoritesArr = this.props.favorites;
     if (typeof myFavoritesArr == "string") {
       myFavoritesArr = JSON.parse(myFavoritesArr)
     }
-    debugger
     const { addFavorite } = this.props;
-
     myFavoritesArr.push(myCity)
     addFavorite(myFavoritesArr);
-    this.setState({addToFavorites: 'Added!'})
+    this.setState({ addToFavorites: 'Added!' })
   }
 }
 
