@@ -3,8 +3,7 @@ import {
     FormGroup,
     Form,
     Input,
-    Button,
-    FormText
+    Button
 } from "reactstrap";
 import { connect } from 'react-redux'
 import { loadCity, getCityName, loadWeather, setTrueFromFavorite } from '../actions'
@@ -41,17 +40,17 @@ class CitySearch extends React.Component {
                                     <li className='autoText' onClick={this.clickedText.bind(this, c.Key)}>{c.LocalizedName}</li>
                                 )}
                             </ul>
-                
+
                         </div>
                         <Button className='searchButton' color="primary" onClick={this.getweather.bind(this)}>
                             <i className="fas fa-search"></i>
                         </Button>
                         <div style={{ display: (this.state.showing ? 'block' : 'none') }} >
-                                <h6>  Oops, can't find your location      </h6>    </div>
+                            <h6>  Oops, can't find your location      </h6>    </div>
                     </FormGroup>
-                    
+
                 </Form>
-           
+
             </>
         );
     }
@@ -73,7 +72,6 @@ class CitySearch extends React.Component {
     }
 
     getweather() {
-        
         if (this.state.cityKey === "" || this.state.cityKey !== this.state.cityKey) {
             for (let i = 0; i < this.props.citysuggetions.length; i++) {
                 if (this.state.searchInput === this.props.citysuggetions[i].LocalizedName) {

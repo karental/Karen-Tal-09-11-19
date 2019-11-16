@@ -8,7 +8,7 @@ function setUnit(unit) {
 }
 
 export const updateUnit = (unit) => {
-    
+
     return dispatch => {
         dispatch(setUnit(unit))
     }
@@ -39,13 +39,11 @@ function setWeather(weather) {
 
 export const loadWeather = (key, unit) => {
     return dispatch => {
-
         axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
             .then(r => r.data)
             .then(weather => {
                 weather.cityKey = key
                 for (let i = 0; i < weather.DailyForecasts.length; i++) {
-
                     var icon = weather.DailyForecasts[i].Day.Icon
                     icon = icon.toString().length
                     if (icon === 1) {
@@ -54,14 +52,14 @@ export const loadWeather = (key, unit) => {
                         weather.DailyForecasts[i].Day.Icon = `https://developer.accuweather.com/sites/default/files/${weather.DailyForecasts[i].Day.Icon}-s.png`
                     }
                     var timestamp = weather.DailyForecasts[i].EpochDate;
-                    var xx = new Date();
-                    xx.setTime(timestamp * 1000);
-                    xx.toUTCString()
-                    var day = xx.getDay();
+                    var date = new Date();
+                    date.setTime(timestamp * 1000);
+                    date.toUTCString()
+                    var day = date.getDay();
                     var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                     days.map(d => {
                         if (day === days.indexOf(d)) {
-                            var weekday = d;
+                            let weekday = d;
                             weather.DailyForecasts[i].weekday = weekday
                         }
                     })
@@ -117,11 +115,15 @@ export const getCityName = (Name) => {
 
 export const getDefaultCity = () => {
     return dispatch => {
-        axios.get(`https://www.geoplugin.net/json.gp`)
-            .then(r => r.data)
-            .then(data => {
-                dispatch(setCityName(data.geoplugin_city))
-            });
+        navigator.geolocation.getCurrentPosition(function (position) {
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+            axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=45745db3561e4f719d66692dee37f7d6&language=en`)
+                .then(r => r.data)
+                .then(data => {
+                    dispatch(setCityName(data.results[0].components.residential))
+                });
+        });
     }
 }
 
@@ -133,7 +135,7 @@ export const addFavorite = (favorite) => {
             dispatch(getFavoritesFromLocalStorage(favorite))
             return
         } else {
-           var favoriteSTR = JSON.stringify(favorite)
+            var favoriteSTR = JSON.stringify(favorite)
             localStorage.setItem('MyFavorites', favoriteSTR);
             dispatch(getFavoritesFromLocalStorage(favorite))
         }

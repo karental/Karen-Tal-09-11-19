@@ -3,13 +3,13 @@ const INITIAL_STATE = {
 }
 
 export default function getCityName(state = INITIAL_STATE, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'GET_CITY_NAME':
             return {
                 ...state,
                 cityName: action.cityName
             }
-            default:
-                return state
+        default:
+            return state
     }
 }

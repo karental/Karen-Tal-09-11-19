@@ -3,14 +3,13 @@ const INITIAL_STATE = {
 }
 
 export default function getFavoritesFromLocalStorage(state = INITIAL_STATE, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'GET_FAVORITES':
             return {
                 ...state,
                 myFavorites: action.myFavorites
             }
-            default:
-                return state
+        default:
+            return state
     }
 }
- 

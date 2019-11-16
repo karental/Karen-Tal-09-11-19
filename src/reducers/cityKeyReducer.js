@@ -1,15 +1,15 @@
 const INITIAL_STATE = {
-    cityKey:''
+    cityKey: ''
 }
 
 export default function cityKeyReducer(state = INITIAL_STATE, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_KEY':
             return {
                 ...state,
                 CityKey: action.CityKey
             }
-            default:
-                return state
+        default:
+            return state
     }
 }

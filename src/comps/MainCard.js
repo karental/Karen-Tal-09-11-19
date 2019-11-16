@@ -16,17 +16,6 @@ class MainCard extends React.Component {
     disabled: false
   }
 
-/*   componentWillMount() {
-    debugger
-    if (this.props.favorites.map(c => c.name === this.props.currCity)) {
-      this.setState({
-        addToFavorites: "Added!"
-      })
-      this.setState({
-        disabled: true
-      })
-    }
-  } */
   render() {
     if (this.props.currweather.length === 0) {
       return (
@@ -43,7 +32,7 @@ class MainCard extends React.Component {
               <CardSubtitle className="mb-2 ">
                 {this.props.currweather.Headline.Text}
               </CardSubtitle>
-              <img src={this.props.currweather.DailyForecasts[0].Day.Icon}></img>
+              <img alt="icon" src={this.props.currweather.DailyForecasts[0].Day.Icon}></img>
               <CardText><h4>{this.props.currweather.DailyForecasts[0].Temperature.Minimum.Value} °{this.props.currweather.DailyForecasts[0].Temperature.Minimum.Unit} </h4></CardText>
               <Button disabled={this.state.disabled} className="btn-round" color="primary" onClick={this.addToFavorite.bind(this)}>
                 {this.state.addToFavorites}
@@ -57,7 +46,6 @@ class MainCard extends React.Component {
   }
 
   updateState() {
-    debugger
     this.setState({ addToFavorites: 'Added!' })
   }
   addToFavorite() {

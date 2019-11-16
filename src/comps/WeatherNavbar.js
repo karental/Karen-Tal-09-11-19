@@ -9,7 +9,6 @@ import {
   Container,
   Button
 } from "reactstrap";
-import CitySearch from './CitySearch';
 import { connect } from 'react-redux';
 import { updateUnit, getFavorite, getDefaultCity, loadCity, loadWeather, loadFavoriteWeather, setTrueFromFavorite } from '../actions';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
@@ -51,7 +50,7 @@ class WeatherNavbar extends React.Component {
       const {
         citysuggetions,
         loadWeather,
-          loadCity
+        loadCity
       } = this.props
       if (citysuggetions !== prevProps.citysuggetions) {
         for (let i = 0; i < this.props.citysuggetions.length; i++) {
@@ -150,14 +149,8 @@ const mapDispatchToProps = {
   loadWeather,
   loadCity,
   setTrueFromFavorite
-  // updateBook
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         setBooks : () => dispatch(setBooks()),
-//         // updateBook : (book) => dispatch(updateBook(book))
-//     }
-// }
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(WeatherNavbar);

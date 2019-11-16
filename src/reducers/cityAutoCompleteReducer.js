@@ -5,13 +5,13 @@ const INITIAL_STATE = {
 
 
 export default function cityAutoCompleteReducer(state = INITIAL_STATE, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_SUGGETIONS':
             return {
                 ...state,
                 citySuggetions: action.citySuggtions
             }
-            default:
-                return state
+        default:
+            return state
     }
 }

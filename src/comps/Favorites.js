@@ -7,7 +7,7 @@ import Loading from './Loading'
 class Favorites extends React.Component {
 
     componentDidUpdate(prevProps) {
-        const {
+        let {
             myFavorites,
             unit
         } = this.props
@@ -17,7 +17,6 @@ class Favorites extends React.Component {
 
         } else {
             var type = (typeof this.props.myFavorites)
-            console.log(type);
 
             if (type === "string") {
                 myFavorites = JSON.parse(favoritesArray)
@@ -42,15 +41,16 @@ class Favorites extends React.Component {
         }
         else if (this.props.favoritesWeather.length === 0) {
             return (
-                <div style={{    
+                <div style={{
                     display: 'flex',
-                    width: '100%'}}>
+                    width: '100%'
+                }}>
                     <Card style={{
                         margin: 'auto',
                         width: '250px',
-                        backgroundColor:'rgba(255, 255, 255, 0.8)'
+                        backgroundColor: 'rgba(255, 255, 255, 0.8)'
                     }}>
-                        <CardBody>  
+                        <CardBody>
                             <CardText>
                                 You have nothing in your Favorites, go back to add locations!
                             </CardText>
@@ -71,7 +71,7 @@ class Favorites extends React.Component {
                         <Card key={w.key} className='favoritesCards' >
                             <CardBody>
                                 <CardTitle onClick={this.getFavWeather.bind(this, w.DailyForecasts[0].key, w.DailyForecasts[0].city)}>{w.DailyForecasts[0].city}</CardTitle>
-                                <CardText><img src={w.DailyForecasts[0].Day.Icon}></img>
+                                <CardText><img alt="icon" src={w.DailyForecasts[0].Day.Icon}></img>
                                 </CardText>
                                 <CardText>{w.DailyForecasts[0].Temperature.Minimum.Value} °{w.DailyForecasts[0].Temperature.Minimum.Unit} </CardText>
                                 <Button className="btn-round btn-icon" color="primary" onClick={this.removeFromFavorites.bind(this, w.DailyForecasts[0].city)}>
@@ -83,9 +83,9 @@ class Favorites extends React.Component {
             );
         }
     }
-goHome(){
-    this.props.history.push('/home')
-}
+    goHome() {
+        this.props.history.push('/home')
+    }
     getFavWeather(cityKey, cityName) {
         const { loadWeather, setTrueFromFavorite, getCityName } = this.props
         loadWeather(cityKey, this.props.unit)
@@ -95,7 +95,7 @@ goHome(){
     }
     removeFromFavorites(city) {
         let myRemoved = this.props.myFavorites
-        myRemoved = myRemoved.filter(c => c.name != city);
+        myRemoved = myRemoved.filter(c => c.name !== city);
         if (myRemoved.length === 0) {
             const { addFavorite } = this.props
             addFavorite([])

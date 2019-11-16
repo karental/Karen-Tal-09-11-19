@@ -7,7 +7,8 @@ class Loading extends React.Component {
             <div className='loadingContainer'>
                 <div id='loading'></div>
             </div>
-   )}
+        )
+    }
 }
 
 export default Loading;

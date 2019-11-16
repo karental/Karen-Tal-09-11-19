@@ -4,13 +4,14 @@ const INITIAL_STATE = {
 }
 
 export default function fromFavoReducer(state = INITIAL_STATE, action) {
-    switch(action.type) {
+    switch (action.type) {
         case 'SET_TRUE':
-            
+
             return {
                 ...state,
-                isTrue: action.isTrue}
-            default:
-                return state
+                isTrue: action.isTrue
+            }
+        default:
+            return state
     }
 }
