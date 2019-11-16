@@ -107,7 +107,7 @@ class WeatherNavbar extends React.Component {
           <Switch>
             <Route path={`${process.env.PUBLIC_URL}/home`} component={HomePage} />
             <Route path={`${process.env.PUBLIC_URL}/favorites`} component={Favorites} />
-            <Redirect from='/' to={`${process.env.PUBLIC_URL}/home`} />
+            {/* <Redirect from='/' to={`${process.env.PUBLIC_URL}/home`} /> */}
           </Switch>
         </Router>
       </>
