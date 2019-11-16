@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 function setUnit(unit) {
     return {
         type: "SET_UNIT",
@@ -37,8 +39,9 @@ function setWeather(weather) {
 
 export const loadWeather = (key, unit) => {
     return dispatch => {
-        fetch(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
-            .then(r => r.json())
+
+        axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
+            .then(r => r.data)
             .then(weather => {
                 weather.cityKey = key
                 for (let i = 0; i < weather.DailyForecasts.length; i++) {
@@ -84,8 +87,8 @@ export const loadCity = (city) => {
             var citySuggtions = []
             dispatch(setCityAutocomplete(citySuggtions))
         } else {
-            fetch(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&q=${city}`)
-                .then(r => r.json())
+            axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&q=${city}`)
+                .then(r => r.data)
                 .then(data => {
                     dispatch(setCityAutocomplete(data))
                 })
@@ -114,8 +117,8 @@ export const getCityName = (Name) => {
 
 export const getDefaultCity = () => {
     return dispatch => {
-        fetch(`http://www.geoplugin.net/json.gp`)
-            .then(r => r.json())
+        axios.get(`http://www.geoplugin.net/json.gp`)
+            .then(r => r.data)
             .then(data => {
                 dispatch(setCityName(data.geoplugin_city))
             });
@@ -169,8 +172,8 @@ export const loadFavoriteWeather = (favoriteKeys, unit) => {
     return dispatch => {
         var favoritesWeather = []
         for (let i = 0; i < favoriteKeys.length; i++) {
-            fetch(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${favoriteKeys[i].key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
-                .then(r => r.json())
+            axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/1day/${favoriteKeys[i].key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
+                .then(r => r.data)
                 .then(weather => {
                     weather.DailyForecasts[0].city = favoriteKeys[i].name
                     weather.DailyForecasts[0].key = favoriteKeys[i].key
