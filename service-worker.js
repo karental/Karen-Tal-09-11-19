@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Karen-Tal-09-11-19/precache-manifest.cf5634ebad64d3dbb8d9f6ac048547e2.js"
+  "/Karen-Tal-09-11-19/precache-manifest.c92cedff718c7d43c0a115b22ae0518f.js"
 );
 
 self.addEventListener('message', (event) => {

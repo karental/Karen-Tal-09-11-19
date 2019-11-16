@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "60a74bc16ed2bd846872dc870f187104",
+    "revision": "67ac0f1eccd686d8511b2e2f69f82b24",
     "url": "/Karen-Tal-09-11-19/index.html"
   },
   {
-    "revision": "f74f96acfd68bd376fe8",
+    "revision": "0d2a092946a4e7ba21a5",
     "url": "/Karen-Tal-09-11-19/static/css/main.8e14038a.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Karen-Tal-09-11-19/static/js/2.aa25d898.chunk.js"
   },
   {
-    "revision": "f74f96acfd68bd376fe8",
-    "url": "/Karen-Tal-09-11-19/static/js/main.14d8790e.chunk.js"
+    "revision": "0d2a092946a4e7ba21a5",
+    "url": "/Karen-Tal-09-11-19/static/js/main.de550d91.chunk.js"
   },
   {
     "revision": "ac6505c996cb8a7349b8",
