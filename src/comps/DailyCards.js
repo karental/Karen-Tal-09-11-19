@@ -23,7 +23,7 @@ class Daily extends React.Component {
                             <CardTitle>{w.weekday}</CardTitle>
                             <CardText><img src={w.Day.Icon}></img>
                             </CardText>
-                            <CardText>{w.Temperature.Minimum.Value} °{w.Temperature.Minimum.unit} </CardText>
+                            <CardText>{w.Temperature.Minimum.Value} °{w.Temperature.Minimum.Unit} </CardText>
                         </CardBody>
                     </Card>
                 )

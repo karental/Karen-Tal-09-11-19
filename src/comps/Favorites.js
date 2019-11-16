@@ -73,7 +73,7 @@ class Favorites extends React.Component {
                                 <CardTitle onClick={this.getFavWeather.bind(this, w.DailyForecasts[0].key, w.DailyForecasts[0].city)}>{w.DailyForecasts[0].city}</CardTitle>
                                 <CardText><img src={w.DailyForecasts[0].Day.Icon}></img>
                                 </CardText>
-                                <CardText>{w.DailyForecasts[0].Temperature.Minimum.Value} °{w.DailyForecasts[0].Temperature.Minimum.unit} </CardText>
+                                <CardText>{w.DailyForecasts[0].Temperature.Minimum.Value} °{w.DailyForecasts[0].Temperature.Minimum.Unit} </CardText>
                                 <Button className="btn-round btn-icon" color="primary" onClick={this.removeFromFavorites.bind(this, w.DailyForecasts[0].city)}>
                                     <i className="fa fa-trash-alt" />
                                 </Button>
@@ -94,7 +94,6 @@ goHome(){
         this.props.history.push('/home')
     }
     removeFromFavorites(city) {
-        debugger
         let myRemoved = this.props.myFavorites
         myRemoved = myRemoved.filter(c => c.name != city);
         if (myRemoved.length === 0) {

@@ -65,10 +65,7 @@ class WeatherNavbar extends React.Component {
           }
         }
       }
-    } /* else {
-      const { setTrueFromFavorite } = this.props
-      setTrueFromFavorite(false)
-    } */
+    }
   }
 
   render() {
