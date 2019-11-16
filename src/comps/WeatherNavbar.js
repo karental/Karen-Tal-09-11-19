@@ -83,17 +83,17 @@ class WeatherNavbar extends React.Component {
               <span className="navbar-toggler-bar bar3"></span>
             </button>
             <UncontrolledCollapse navbar toggler="#navbarTogglerDemo01">
-              <NavbarBrand href="/">
+              <NavbarBrand>
                 Weather
             </NavbarBrand>
               <Nav className="mr-auto mt-2 mt-lg-0" navbar>
                 <NavItem>
-                  <NavLink href="/home">
+                  <NavLink href={`${process.env.PUBLIC_URL}/home`}>
                     Home <span className="sr-only">(current)</span>
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="/favorites" >
+                  <NavLink href={`${process.env.PUBLIC_URL}/favorites`} >
                     Favorites
                 </NavLink>
                 </NavItem>
@@ -105,8 +105,8 @@ class WeatherNavbar extends React.Component {
         <Router>
 
           <Switch>
-            <Route path="/home" component={HomePage} />
-            <Route path="/favorites" component={Favorites} />
+            <Route path={`${process.env.PUBLIC_URL}/home`} component={HomePage} />
+            <Route path={`${process.env.PUBLIC_URL}/favorites`} component={Favorites} />
             <Redirect from='/' to='/home' />
           </Switch>
         </Router>
