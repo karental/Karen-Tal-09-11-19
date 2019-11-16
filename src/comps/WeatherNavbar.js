@@ -88,12 +88,12 @@ class WeatherNavbar extends React.Component {
             </NavbarBrand>
               <Nav className="mr-auto mt-2 mt-lg-0" navbar>
                 <NavItem>
-                  <NavLink href={`${process.env.PUBLIC_URL}/home`}>
+                  <NavLink href="/home">
                     Home <span className="sr-only">(current)</span>
                   </NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink href={`${process.env.PUBLIC_URL}/favorites`} >
+                  <NavLink href="/favorites" >
                     Favorites
                 </NavLink>
                 </NavItem>
@@ -105,9 +105,9 @@ class WeatherNavbar extends React.Component {
         <Router>
 
           <Switch>
-            <Route path={`${process.env.PUBLIC_URL}/home`} component={HomePage} />
-            <Route path={`${process.env.PUBLIC_URL}/favorites`} component={Favorites} />
-            {/* <Redirect from='/' to={`${process.env.PUBLIC_URL}/home`} /> */}
+            <Route path="/home" component={HomePage} />
+            <Route path="/favorites" component={Favorites} />
+            <Redirect from='/' to='/home' />
           </Switch>
         </Router>
       </>

@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "http://karental.github.io/Karen-Tal-09-11-19",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.3"
+  },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.7",
     "react": "^16.11.0",
