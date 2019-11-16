@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/Karen-Tal-09-11-19/static/css/main.8e14038a.chunk.css",
+    "main.js": "/Karen-Tal-09-11-19/static/js/main.14d8790e.chunk.js",
+    "main.js.map": "/Karen-Tal-09-11-19/static/js/main.14d8790e.chunk.js.map",
+    "runtime-main.js": "/Karen-Tal-09-11-19/static/js/runtime-main.9ee1a580.js",
+    "runtime-main.js.map": "/Karen-Tal-09-11-19/static/js/runtime-main.9ee1a580.js.map",
+    "static/js/2.aa25d898.chunk.js": "/Karen-Tal-09-11-19/static/js/2.aa25d898.chunk.js",
+    "static/js/2.aa25d898.chunk.js.map": "/Karen-Tal-09-11-19/static/js/2.aa25d898.chunk.js.map",
+    "index.html": "/Karen-Tal-09-11-19/index.html",
+    "precache-manifest.cf5634ebad64d3dbb8d9f6ac048547e2.js": "/Karen-Tal-09-11-19/precache-manifest.cf5634ebad64d3dbb8d9f6ac048547e2.js",
+    "service-worker.js": "/Karen-Tal-09-11-19/service-worker.js",
+    "static/css/main.8e14038a.chunk.css.map": "/Karen-Tal-09-11-19/static/css/main.8e14038a.chunk.css.map",
+    "static/media/back.jpg": "/Karen-Tal-09-11-19/static/media/back.8f803e2a.jpg",
+    "static/media/day.jpg": "/Karen-Tal-09-11-19/static/media/day.c819dfae.jpg",
+    "static/media/now-ui-kit.css": "/Karen-Tal-09-11-19/static/media/nucleo-outline.8ebec31f.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9ee1a580.js",
+    "static/js/2.aa25d898.chunk.js",
+    "static/css/main.8e14038a.chunk.css",
+    "static/js/main.14d8790e.chunk.js"
+  ]
+}
