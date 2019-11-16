@@ -40,7 +40,7 @@ function setWeather(weather) {
 export const loadWeather = (key, unit) => {
     return dispatch => {
 
-        axios.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
+        axios.get(`https://dataservice.accuweather.com/forecasts/v1/daily/5day/${key}?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&metric=${unit}`)
             .then(r => r.data)
             .then(weather => {
                 weather.cityKey = key
@@ -87,7 +87,7 @@ export const loadCity = (city) => {
             var citySuggtions = []
             dispatch(setCityAutocomplete(citySuggtions))
         } else {
-            axios.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&q=${city}`)
+            axios.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=hwxDTxNOPGPd7zeoqPEikNUDPmD0vtLG&q=${city}`)
                 .then(r => r.data)
                 .then(data => {
                     dispatch(setCityAutocomplete(data))
@@ -117,7 +117,7 @@ export const getCityName = (Name) => {
 
 export const getDefaultCity = () => {
     return dispatch => {
-        axios.get(`http://www.geoplugin.net/json.gp`)
+        axios.get(`https://www.geoplugin.net/json.gp`)
             .then(r => r.data)
             .then(data => {
                 dispatch(setCityName(data.geoplugin_city))
