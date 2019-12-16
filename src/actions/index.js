@@ -121,6 +121,8 @@ export const getDefaultCity = () => {
             axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lon}&key=45745db3561e4f719d66692dee37f7d6&language=en`)
                 .then(r => r.data)
                 .then(data => {
+                    console.log(data);
+                    
                     dispatch(setCityName(data.results[0].components.residential))
                 });
         });

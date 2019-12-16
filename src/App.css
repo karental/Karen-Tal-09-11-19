@@ -74,8 +74,7 @@ display: flex;
     width: 73rem;
     height: 38rem;
     background: rgba(255, 255, 255, 0.08)
-
-}
+  }
 
 
 @media screen and (max-width: 1040px ) { 
@@ -118,9 +117,9 @@ border-bottom-right-radius: 0  !important;
 }
 
 .loadingContainer{
- width:300px;
-  
+ width:100%;
 }
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:100);
  
 #loading {

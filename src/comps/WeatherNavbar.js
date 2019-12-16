@@ -54,6 +54,7 @@ class WeatherNavbar extends React.Component {
       } = this.props
       if (citysuggetions !== prevProps.citysuggetions) {
         for (let i = 0; i < this.props.citysuggetions.length; i++) {
+          debugger
           if (this.props.cityName === this.props.citysuggetions[i].LocalizedName) {
             loadWeather(this.props.citysuggetions[i].Key, this.props.unit)
             loadCity('');
